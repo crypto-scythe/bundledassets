@@ -1,0 +1,36 @@
+name: Run unit tests
+on: push
+jobs:
+    php:
+        name: PHP ${{ matrix.php }} on ${{ matrix.os }}
+        runs-on: ${{ matrix.os }}
+        strategy:
+            matrix:
+                php:
+                    - 7.4
+                    - 8.0
+                os:
+                    - ubuntu-latest
+        steps:
+            -   name: Checkout code
+                uses: actions/checkout@v1
+
+            -   name: Setup PHP
+                uses: shivammathur/setup-php@v2
+                with:
+                    php-version: ${{ matrix.php }}
+                    extensions: dom, filter, json, libxml, mbstring, phar, simplexml, tokenizer, xml, xmlwriter
+                    coverage: xdebug
+
+            -   name: Install dependencies
+                run: composer install --prefer-dist --no-interaction
+
+            -   name: Execute tests
+                run: composer unittest-coverage
+
+            -   name: Check test coverage
+                uses: johanvanhelden/gha-clover-test-coverage-check@v1
+                if: success()
+                with:
+                    percentage: 100
+                    filename: test-results/clover-coverage.xml
