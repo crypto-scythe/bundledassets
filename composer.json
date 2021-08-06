@@ -1,5 +1,12 @@
 {
     "name": "crypto_scythe/bundledassets",
+    "description": "A Laminas view helper for adding JavaScript and CSS assets created by bundlers",
+    "keywords": [
+        "laminas",
+        "helper",
+        "assets",
+        "bundler"
+    ],
     "version": "1.0.0",
     "type": "library",
     "license": "MIT",
