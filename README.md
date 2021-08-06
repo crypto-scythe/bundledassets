@@ -2,6 +2,7 @@
 # crypto_scythe/bundledassets
 
 [![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
+[![Run unit tests](https://github.com/crypto-scythe/bundledassets/actions/workflows/run-unit-tests.yaml/badge.svg?branch=master)](https://github.com/crypto-scythe/bundledassets/actions/workflows/run-unit-tests.yaml)
 
 A Laminas view helper for adding JavaScript and CSS assets created by bundlers.
 
