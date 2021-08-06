@@ -28,11 +28,13 @@ CryptoScythe\BundledAssets\ConfigProvider::class,
 # global.php
 use CryptoScythe\BundledAssets\ConfigProvider as BundledAssetsConfigProvider;
 
-BundledAssetsConfigProvider::class => [
-    BundledAssetsConfigProvider::CONFIG_KEY_CACHE_PATH => 'data/bundled_assets_cache.php', # Path to cache file, mostly production 
-        BundledAssetsConfigProvider::CONFIG_KEY_MANIFESTS => [ # Hash map of manifest files
-            BundledAssetsConfigProvider::CONFIG_KEY_DEFAULT_MANIFEST => 'data/webpack-assets.json',
-            'other_manifest' => 'data/other-assets.json', # [optional] You can use multiple asset manifests
+BundledAssetsConfigProvider::GLOBAL_CONFIG_KEY_VIEW_HELPER_CONFIG => [
+    BundledAssetsConfigProvider::class => [
+        BundledAssetsConfigProvider::CONFIG_KEY_CACHE_PATH => 'data/bundled_assets_cache.php', # Path to cache file, mostly production 
+            BundledAssetsConfigProvider::CONFIG_KEY_MANIFESTS => [ # Hash map of manifest files
+                BundledAssetsConfigProvider::CONFIG_KEY_DEFAULT_MANIFEST => 'data/webpack-assets.json',
+                'other_manifest' => 'data/other-assets.json', # [optional] You can use multiple asset manifests
+        ],
     ],
 ],
 ```
