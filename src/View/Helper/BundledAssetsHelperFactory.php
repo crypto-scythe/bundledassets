@@ -17,18 +17,18 @@ final class BundledAssetsHelperFactory
 {
     public function __invoke(ContainerInterface $container): BundledAssetsHelper
     {
-        $helperPluginMananger = $container->get(HelperPluginManager::class);
+        $helperPluginManager = $container->get(HelperPluginManager::class);
 
         return new BundledAssetsHelper(
-            $helperPluginMananger->get(HeadLink::class),
-            $helperPluginMananger->get(HeadScript::class),
+            $helperPluginManager->get(HeadLink::class),
+            $helperPluginManager->get(HeadScript::class),
             $this->manifest($container),
         );
     }
 
     private function manifest(ContainerInterface $container): array
     {
-        $config = $container->get('config');
+        $config = $this->ensureConfigIsArray($container->get('config'));
         $assetsConfig = $config[ConfigProvider::GLOBAL_CONFIG_KEY_VIEW_HELPER_CONFIG][ConfigProvider::class];
         $manifests = $assetsConfig[ConfigProvider::CONFIG_KEY_MANIFESTS];
         $cacheFile = ($config[ConfigAggregator::ENABLE_CACHE] ?? false)
@@ -81,5 +81,10 @@ final class BundledAssetsHelperFactory
         }
 
         return $parsedManifests;
+    }
+
+    private function ensureConfigIsArray(iterable $config): array
+    {
+        return is_array($config) ? $config : (array) $config;
     }
 }

@@ -3,11 +3,13 @@
     "description": "A Laminas view helper for adding JavaScript and CSS assets created by bundlers",
     "keywords": [
         "laminas",
+        "mvc",
+        "mezzio",
         "helper",
         "assets",
         "bundler"
     ],
-    "version": "1.0.0",
+    "version": "1.0.1",
     "type": "library",
     "license": "MIT",
     "scripts": {
@@ -46,7 +48,6 @@
         "laminas/laminas-view": "^2.12",
         "laminas/laminas-config-aggregator": "^1.5",
         "laminas/laminas-escaper": "^2.8",
-        "psr/container": "^1.1",
         "laminas/laminas-servicemanager": "^3.7"
     },
     "require-dev": {
