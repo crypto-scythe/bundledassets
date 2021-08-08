@@ -5,6 +5,19 @@
 
 A Laminas view helper for adding JavaScript and CSS assets created by bundlers.
 
+## Installation
+
+### Composer
+```shell
+composer require crypto_scythe/bundledassets
+```
+
+### Manual
+
+You can download the [latest release zip file](https://github.com/crypto-scythe/bundledassets/releases/latest)
+and unpack it into a own module folder. Please make sure to install the dependencies
+outlined in the composer.json for it to work correctly.
+
 ## Usage/Examples
 
 ### Laminas MVC
