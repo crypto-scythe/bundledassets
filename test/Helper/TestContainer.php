@@ -30,6 +30,11 @@ final class TestContainer implements ContainerInterface
 
     public function has(string $id): bool
     {
-        return true;
+        return isset($this->dependencies[$id]);
+    }
+
+    public function withAdditionalDependencies(array $additionalDependencies): self
+    {
+        return new self(array_merge($this->dependencies, $additionalDependencies));
     }
 }
