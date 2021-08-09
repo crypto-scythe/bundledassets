@@ -17,7 +17,9 @@ final class BundledAssetsHelperFactory
 {
     public function __invoke(ContainerInterface $container): BundledAssetsHelper
     {
-        $helperPluginManager = $container->get(HelperPluginManager::class);
+        $helperPluginManager = $container->has('ViewHelperManager')
+            ? $container->get('ViewHelperManager')
+            : $container->get(HelperPluginManager::class);
 
         return new BundledAssetsHelper(
             $helperPluginManager->get(HeadLink::class),
@@ -85,6 +87,11 @@ final class BundledAssetsHelperFactory
 
     private function ensureConfigIsArray(iterable $config): array
     {
-        return is_array($config) ? $config : (array) $config;
+        return is_array($config)
+            ? $config
+            : (method_exists($config, 'toArray')
+                ? $config->toArray()
+                : (array) $config
+            );
     }
 }
