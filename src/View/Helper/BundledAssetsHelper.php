@@ -38,11 +38,17 @@ final class BundledAssetsHelper extends AbstractHelper
 
         $stylesheets = empty($assets['css'] ?? '')
             ? []
-            : (is_string($assets['css']) ? [$assets['css']] : $assets['css']);
+            : (is_string($assets['css'])
+                ? [$assets['css']]
+                : $assets['css']
+            );
 
         $scripts = empty($assets['js'] ?? '')
             ? []
-            : (is_string($assets['js']) ? [$assets['js']] : $assets['js']);
+            : (is_string($assets['js'])
+                ? [$assets['js']]
+                : $assets['js']
+            );
 
         foreach ($stylesheets as $stylesheet) {
             $this->headLink->appendStylesheet($stylesheet);
